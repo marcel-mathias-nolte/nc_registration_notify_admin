@@ -26,6 +26,13 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['nc_registration_notify_admin'] = arra
 	'inputType'               => 'checkbox',
 	'sql'                     => 'char(1) NOT NULL default \'\''
 );
+$GLOBALS['TL_DCA']['tl_module']['fields']['nc_registration_notify_admin_activate'] = array
+(
+	'label'                   => &$GLOBALS['TL_LANG']['tl_module']['nc_registration_notify_admin_activate'],
+	'exclude'                 => true,
+	'inputType'               => 'checkbox',
+	'sql'                     => 'char(1) NOT NULL default \'\''
+);
 
 $GLOBALS['TL_HOOKS']['loadDataContainer'][] = array('tl_module_registration_notify_administrator', 'extendPalettes');
 
@@ -56,7 +63,7 @@ class tl_module_registration_notify_administrator extends Backend
 		{
 			return;
 		}
-		$GLOBALS['TL_DCA']['tl_module']['subpalettes']['reg_activate'] = str_replace('reg_jumpTo,reg_text', 'reg_jumpTo,reg_text,nc_registration_notify_admin', $GLOBALS['TL_DCA']['tl_module']['subpalettes']['reg_activate']);
+		$GLOBALS['TL_DCA']['tl_module']['subpalettes']['reg_activate'] = str_replace('reg_jumpTo,reg_text', 'reg_jumpTo,reg_text,nc_registration_notify_admin,nc_registration_notify_admin_activate', $GLOBALS['TL_DCA']['tl_module']['subpalettes']['reg_activate']);
 	}
 }
 

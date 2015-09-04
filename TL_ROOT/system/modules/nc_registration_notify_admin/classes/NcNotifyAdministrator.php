@@ -1,4 +1,4 @@
-<?php if (!defined('TL_ROOT')) die('You can not access this file directly!');
+<?php 
 
 /**
  * Contao Open Source CMS
@@ -25,7 +25,7 @@ namespace NC;
  *
  * Provide necessary callback functions.
  */
-class NcNotifyAdministrator extends Frontend
+class NcNotifyAdministrator extends \Frontend
 {
 
 	/**
@@ -34,30 +34,43 @@ class NcNotifyAdministrator extends Frontend
 	 * @param array
 	 * @param object 
 	 */
-	public function informAdmin($intId, $arrData, $objModule)
+	public function informAdminCreate($intId, $arrData, $objModule)
 	{
 		if ($objModule->nc_registration_notify_admin)
 		{
-			$this->sendAdminNotification($intId, $arrData);
+			$this->sendAdminNotification((object)$arrData, $GLOBALS['TL_LANG']['MSC']['registration_notify_admin_text']);
+		}
+	}
+	
+	
+	/**
+	 * Notifiy admin
+	 * @param object
+	 * @param object 
+	 */
+	public function informAdminActivate($objUser, \ModuleRegistration $objRegistration)
+	{
+		if ($objRegistration->nc_registration_notify_admin_activate)
+		{
+			$this->sendAdminNotification((object)$objUser[0]->row(), $GLOBALS['TL_LANG']['MSC']['registration_notify_admin_activate_text']);
 		}
 	}
 
 
 	/**
 	 * Send an admin notification e-mail
-	 * @param integer
-	 * @param array
+	 * @param object
 	 */
-	protected function sendAdminNotification($intId, $arrData)
+	protected function sendAdminNotification($objUser, $text)
 	{
-		$objEmail = new Email();
+		$objEmail = new \Email();
 		$objEmail->from = $GLOBALS['TL_ADMIN_EMAIL'];
 		$objEmail->fromName = $GLOBALS['TL_ADMIN_NAME'];
-		$objEmail->subject = sprintf($GLOBALS['TL_LANG']['MSC']['adminSubject'], $this->Environment->host);
+		$objEmail->subject = sprintf($text, $objUser->id, '');
 		$strData = "\n\n";
-		foreach ($arrData as $k => $v)
+		foreach ($objUser as $k => $v)
 		{
-			if ($k == 'password' || $k == 'tstamp' || $k == 'activation')
+			if ($k == 'password' || $k == 'tstamp' || $k == 'activation' || trim($k) == '')
 			{
 				continue;
 			}
@@ -68,7 +81,7 @@ class NcNotifyAdministrator extends Frontend
 			}
 			$strData .= $GLOBALS['TL_LANG']['tl_member'][$k][0] . ': ' . (is_array($v) ? implode(', ', $v) : $v) . "\n";
 		}
-		$objEmail->text = sprintf($GLOBALS['TL_LANG']['MSC']['registration_notify_admin_text'], $intId, $strData . "\n") . "\n";
+		$objEmail->text = sprintf($text, $objUser->id, $strData . "\n") . "\n";
 		$objEmail->sendTo($GLOBALS['TL_ADMIN_EMAIL']);
 		$this->log('An admin notification e-mail has been sent', 'NotifyAdmin sendAdminNotification()', TL_ACCESS);
 	}

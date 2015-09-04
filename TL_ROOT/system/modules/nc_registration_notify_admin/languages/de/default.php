@@ -20,5 +20,6 @@
  * Miscellaneous
  */
 $GLOBALS['TL_LANG']['MSC']['registration_notify_admin_text']        = 'Ein neues Mitglied (ID %s) hat sich auf Ihrer Webseite registriert.%s';
+$GLOBALS['TL_LANG']['MSC']['registration_notify_admin_activate_text']        = 'Ein neues Benutzerkonto (ID %s) wurde auf Ihrer Webseite aktiviert.%s';
 
 ?>

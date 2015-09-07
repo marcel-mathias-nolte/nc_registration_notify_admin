@@ -1,4 +1,8 @@
+<<<<<<< HEAD:TL_ROOT/system/modules/nc_registration_notify_admin/config/config.php
+<?php
+=======
 <?php 
+>>>>>>> ext:TL_ROOT/system/modules/nc_registration_notify_admin_ext/config/config.php
 
 /**
  * Contao Open Source CMS
@@ -17,7 +21,8 @@
 
 
 /**
- * Miscellaneous
+ * Hooks
  */
-$GLOBALS['TL_LANG']['MSC']['registration_notify_admin_text']        = 'A new member (ID %s) has been registered on your website.%s';
-$GLOBALS['TL_LANG']['MSC']['registration_notify_admin_activate_text']        = 'A new user account (ID %s) has been activated on your website.%s';
+$GLOBALS['TL_HOOKS']['createNewUser'][] = array('NcNotifyAdministrator', 'informAdminCreate');
+$GLOBALS['TL_HOOKS']['activateAccount'][] = array('NcNotifyAdministrator', 'informAdminActivate');
+//$GLOBALS['TL_HOOKS']['closeAccount'][] = array('NcNotifyAdministrator', 'informAdminClose');

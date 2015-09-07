@@ -1,4 +1,4 @@
-<?php if (!defined('TL_ROOT')) die('You can not access this file directly!');
+<?php 
 
 /**
  * Contao Open Source CMS
@@ -21,5 +21,3 @@
  */
 $GLOBALS['TL_LANG']['MSC']['registration_notify_admin_text']        = 'A new member (ID %s) has been registered on your website.%s';
 $GLOBALS['TL_LANG']['MSC']['registration_notify_admin_activate_text']        = 'A new user account (ID %s) has been activated on your website.%s';
-
-?>

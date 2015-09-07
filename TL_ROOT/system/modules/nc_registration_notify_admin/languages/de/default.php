@@ -19,9 +19,5 @@
 /**
  * Miscellaneous
  */
-$GLOBALS['TL_LANG']['MSC']['registration_notify_admin_text']        = 'A new member (ID %s) has been registered on your website.%s';
-<<<<<<< HEAD:TL_ROOT/system/modules/nc_registration_notify_admin/languages/en/default.php
-$GLOBALS['TL_LANG']['MSC']['registration_notify_admin_activate_text']        = 'A new user account (ID %s) has been activated on your website.%s';
-=======
-$GLOBALS['TL_LANG']['MSC']['activation_notify_admin_text']        = 'A new user account (ID %s) has been activated on your website.%s';
->>>>>>> ext:TL_ROOT/system/modules/nc_registration_notify_admin_ext/languages/en/default.php
+$GLOBALS['TL_LANG']['MSC']['registration_notify_admin_text']        = 'Ein neues Mitglied (ID %s) hat sich auf Ihrer Webseite registriert.%s';
+$GLOBALS['TL_LANG']['MSC']['registration_notify_admin_activate_text']        = 'Ein neues Benutzerkonto (ID %s) wurde auf Ihrer Webseite aktiviert.%s';

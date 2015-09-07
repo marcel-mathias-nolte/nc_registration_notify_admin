@@ -1,4 +1,4 @@
-<?php if (!defined('TL_ROOT')) die('You can not access this file directly!');
+<?php
 
 /**
  * Contao Open Source CMS
@@ -17,9 +17,7 @@
 
 
 /**
- * Fields
+ * Miscellaneous
  */
-$GLOBALS['TL_LANG']['tl_module']['nc_registration_notify_admin'] = array('Administrator benachrichten nachdem die Registrierung erfolgt ist', 'Klicken Sie hier, falls der Administrator noch zusätzlich benachrichtigt werden soll.');
-$GLOBALS['TL_LANG']['tl_module']['nc_registration_notify_admin_activate'] = array('Administrator benachrichten nachdem das Konto aktiviert wurde', 'Klicken Sie hier, falls der Administrator benachrichtigt werden soll, sobald das Benutzerkonto aktiviert wurde.');
-
-?>
+$GLOBALS['TL_LANG']['MSC']['registration_notify_admin_text']        = 'Ein neues Mitglied (ID %s) hat sich auf Ihrer Webseite registriert.%s';
+$GLOBALS['TL_LANG']['MSC']['activation_notify_admin_text']        = 'Ein neues Benutzerkonto (ID %s) wurde auf Ihrer Webseite aktiviert.%s';

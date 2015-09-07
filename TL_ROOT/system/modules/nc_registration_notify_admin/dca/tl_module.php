@@ -1,4 +1,4 @@
-<?php if (!defined('TL_ROOT')) die('You can not access this file directly!');
+<?php 
 
 /**
  * Contao Open Source CMS
@@ -66,5 +66,3 @@ class tl_module_registration_notify_administrator extends Backend
 		$GLOBALS['TL_DCA']['tl_module']['subpalettes']['reg_activate'] = str_replace('reg_jumpTo,reg_text', 'reg_jumpTo,reg_text,nc_registration_notify_admin,nc_registration_notify_admin_activate', $GLOBALS['TL_DCA']['tl_module']['subpalettes']['reg_activate']);
 	}
 }
-
-?>

@@ -86,5 +86,3 @@ class NcNotifyAdministrator extends \Frontend
 		$this->log('An admin notification e-mail has been sent', 'NotifyAdmin sendAdminNotification()', TL_ACCESS);
 	}
 }
-
-?>

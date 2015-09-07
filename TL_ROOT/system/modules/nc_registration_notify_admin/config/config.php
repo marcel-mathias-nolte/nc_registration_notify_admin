@@ -1,4 +1,4 @@
-<?php if (!defined('TL_ROOT')) die('You can not access this file directly!');
+<?php
 
 /**
  * Contao Open Source CMS
@@ -22,5 +22,3 @@
 $GLOBALS['TL_HOOKS']['createNewUser'][] = array('NcNotifyAdministrator', 'informAdminCreate');
 $GLOBALS['TL_HOOKS']['activateAccount'][] = array('NcNotifyAdministrator', 'informAdminActivate');
 //$GLOBALS['TL_HOOKS']['closeAccount'][] = array('NcNotifyAdministrator', 'informAdminClose');
-
-?>

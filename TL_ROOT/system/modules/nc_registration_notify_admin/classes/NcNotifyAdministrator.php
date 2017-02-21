@@ -69,7 +69,7 @@ class NcNotifyAdministrator extends \Frontend
 		$objEmail->subject = sprintf($text, $objUser->id, '');
 		$strData = "\n\n";
 
-		$hiddenFields = ['id', 'password', 'tstamp', 'activation', 'assignDir', 'homeDir', 'disable', 'start', 'stop', 'dateAdded', 'lastLogin', 'currentLogin', 'loginCount', 'locked', 'session', 'autologin', 'createdOn'];
+		$hiddenFields = array('id', 'password', 'tstamp', 'activation', 'assignDir', 'homeDir', 'disable', 'start', 'stop', 'dateAdded', 'lastLogin', 'currentLogin', 'loginCount', 'locked', 'session', 'autologin', 'createdOn');
 
 		foreach ($objUser as $k => $v)
 		{

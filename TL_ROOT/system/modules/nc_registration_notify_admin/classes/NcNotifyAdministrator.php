@@ -1,16 +1,16 @@
-<?php 
+<?php
 
 /**
  * Contao Open Source CMS
- * 
+ *
  * Copyright (C) 2005-2012 Leo Feyer
- * 
- * @package   NC Registration Admin Notification 
+ *
+ * @package   NC Registration Admin Notification
  * @author    Marcel Mathias Nolte
- * @copyright Marcel Mathias Nolte 2015
+ * @copyright Marcel Mathias Nolte 2017
  * @website	  https://www.noltecomputer.com
  * @license   <marcel.nolte@noltecomputer.de> wrote this file. As long as you retain this notice you
- *            can do whatever you want with this stuff. If we meet some day, and you think this stuff 
+ *            can do whatever you want with this stuff. If we meet some day, and you think this stuff
  *            is worth it, you can buy me a beer in return. Meanwhile you can provide a link to my
  *            homepage, if you want, or send me a postcard. Be creative! Marcel Mathias Nolte
  */
@@ -32,7 +32,7 @@ class NcNotifyAdministrator extends \Frontend
 	 * Notifiy admin
 	 * @param integer
 	 * @param array
-	 * @param object 
+	 * @param object
 	 */
 	public function informAdminCreate($intId, $arrData, $objModule)
 	{
@@ -41,18 +41,18 @@ class NcNotifyAdministrator extends \Frontend
 			$this->sendAdminNotification((object)$arrData, $GLOBALS['TL_LANG']['MSC']['registration_notify_admin_text']);
 		}
 	}
-	
-	
+
+
 	/**
 	 * Notifiy admin
 	 * @param object
-	 * @param object 
+	 * @param object
 	 */
 	public function informAdminActivate($objUser, \ModuleRegistration $objRegistration)
 	{
 		if ($objRegistration->nc_registration_notify_admin_activate)
 		{
-			$this->sendAdminNotification((object)$objUser[0]->row(), $GLOBALS['TL_LANG']['MSC']['registration_notify_admin_activate_text']);
+			$this->sendAdminNotification((object)$objUser->row(), $GLOBALS['TL_LANG']['MSC']['registration_notify_admin_activate_text']);
 		}
 	}
 
@@ -68,9 +68,12 @@ class NcNotifyAdministrator extends \Frontend
 		$objEmail->fromName = $GLOBALS['TL_ADMIN_NAME'];
 		$objEmail->subject = sprintf($text, $objUser->id, '');
 		$strData = "\n\n";
+
+		$hiddenFields = array('id', 'password', 'tstamp', 'activation', 'assignDir', 'homeDir', 'disable', 'start', 'stop', 'dateAdded', 'lastLogin', 'currentLogin', 'loginCount', 'locked', 'session', 'autologin', 'createdOn');
+
 		foreach ($objUser as $k => $v)
 		{
-			if ($k == 'password' || $k == 'tstamp' || $k == 'activation' || trim($k) == '')
+			if (in_array($k, $hiddenFields) || $v == "a:0:{}" || empty($v))
 			{
 				continue;
 			}
